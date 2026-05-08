@@ -3,121 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чек-лист: Сборка на Zeon</title>
+    <title>Master PC Check-List</title>
     <style>
-        /* Основные настройки фона и страницы */
+        :root {
+            --bg: #0d1117;
+            --card-bg: #161b22;
+            --accent: #58a6ff;
+            --success: #238636;
+            --text: #c9d1d9;
+            --text-dim: #8b949e;
+        }
+
         body { 
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            /* Глубокий темный градиент */
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
-            background-attachment: fixed;
-            color: #e0e0e0; 
-            padding: 20px; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, #010409 100%);
+            color: var(--text);
+            padding: 15px;
             margin: 0;
-            min-height: 100vh;
+            line-height: 1.5;
         }
 
-        h2 { 
-            color: #4CAF50; 
-            border-bottom: 2px solid #4CAF50; 
-            padding-bottom: 10px; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-        }
+        h1 { color: var(--accent); font-size: 1.5rem; text-align: center; margin-bottom: 20px; }
+        h2 { color: var(--success); font-size: 1.1rem; border-bottom: 1px solid #30363d; padding-bottom: 8px; margin-top: 25px; }
 
-        /* Карточки разделов */
         .section { 
-            background: rgba(30, 30, 30, 0.8); /* Полупрозрачность для эффекта стекла */
-            padding: 20px; 
-            border-radius: 12px; 
-            margin-bottom: 20px; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        /* Настройка элементов списка */
-        .item { 
-            display: flex; 
-            align-items: center; 
-            margin-bottom: 12px; 
-            cursor: pointer; 
-            transition: transform 0.2s;
-        }
-
-        .item:active {
-            transform: scale(0.98);
-        }
-
-        input[type="checkbox"] { 
-            width: 24px; 
-            height: 24px; 
-            margin-right: 15px; 
-            cursor: pointer; 
-            accent-color: #4CAF50; /* Цвет галочки */
-        }
-
-        .checked-text { 
-            text-decoration: line-through; 
-            color: #757575; 
-        }
-
-        .hint { 
-            font-size: 0.85em; 
-            color: #888; 
-            margin-left: 39px; 
-            margin-top: -8px; 
+            background: var(--card-bg); 
+            padding: 15px; 
+            border-radius: 10px; 
             margin-bottom: 15px; 
-            line-height: 1.4;
+            border: 1px solid #30363d;
         }
+
+        .item { display: flex; align-items: flex-start; margin-bottom: 15px; }
+        
+        input[type="checkbox"] { 
+            width: 22px; 
+            height: 22px; 
+            margin-right: 12px; 
+            flex-shrink: 0;
+            accent-color: var(--success);
+        }
+
+        .item-content label { font-weight: bold; display: block; cursor: pointer; }
+        .hint { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+        
+        .checked-text { text-decoration: line-through; color: var(--text-dim); opacity: 0.6; }
+
+        /* Блок со ссылками */
+        .links-grid { display: grid; gap: 10px; margin-top: 10px; }
+        .link-card {
+            background: #21262d;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--accent);
+            font-size: 0.9rem;
+            border: 1px solid #30363d;
+            text-align: center;
+        }
+        .link-card:active { background: #30363d; }
     </style>
 </head>
 <body>
 
-    <h2>🛠 Проверка комплектующих (Б/У)</h2>
+    <h1>🖥️ Ультимативный Чек-лист ПК</h1>
 
     <div class="section">
-        <div class="item">
-            <input type="checkbox" id="mobo">
-            <label for="mobo">Материнка (X79/X99)</label>
-        </div>
-        <div class="hint">Осмотри сокет на загнутые ножки. Проверь все слоты оперативки и вздутые конденсаторы.</div>
+        <h2>🔍 Визуальный осмотр</h2>
         
         <div class="item">
-            <input type="checkbox" id="cpu">
-            <label for="cpu">Процессор (Zeon E5)</label>
+            <input type="checkbox" id="c1">
+            <div class="item-content">
+                <label for="c1">Внешний вид (Корпус/БП)</label>
+                <div class="hint">Царапины, вмятины, запах гари, следы залития жидкостью.</div>
+            </div>
         </div>
-        <div class="hint">Проверь "брюшко" на наличие сбитых компонентов и царапин на текстолите.</div>
 
         <div class="item">
-            <input type="checkbox" id="gpu">
-            <label for="gpu">Видеокарта (GTX 1060)</label>
+            <input type="checkbox" id="c2">
+            <div class="item-content">
+                <label for="c2">Материнская плата</label>
+                <div class="hint">Вздутые конденсаторы, царапины на дорожках, загнутые ножки сокета.</div>
+            </div>
         </div>
-        <div class="hint">Смотри на пломбы. Текстолит должен быть светлым (не "жареным"). Проверь кулеры на люфт.</div>
 
         <div class="item">
-            <input type="checkbox" id="psu">
-            <label for="psu">Блок питания</label>
+            <input type="checkbox" id="c3">
+            <div class="item-content">
+                <label for="c3">Видеокарта</label>
+                <div class="hint">Пломбы, цвет текстолита (не должен быть тёмным), подтеки термопрокладок.</div>
+            </div>
         </div>
-        <div class="hint">Проверь вольтаж мультиметром или в софте. Главное — отсутствие запаха гари.</div>
     </div>
 
     <div class="section">
-        <h2>📊 Тесты в софте</h2>
-        <div class="item"><input type="checkbox" id="fur"><span>FurMark (15 минут)</span></div>
-        <div class="item"><input type="checkbox" id="aida"><span>AIDA64 (Стресс-тест CPU)</span></div>
-        <div class="item"><input type="checkbox" id="mem"><span>TestMem5 (Проверка ОЗУ)</span></div>
+        <h2>⚙️ Тесты под нагрузкой</h2>
+        
+        <div class="item">
+            <input type="checkbox" id="t1">
+            <div class="item-content">
+                <label for="t1">FurMark (GPU)</label>
+                <div class="hint">Гони 10-15 мин. Следи за температурой и отсутствием артефактов.</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <input type="checkbox" id="t2">
+            <div class="item-content">
+                <label for="t2">OCCT / AIDA64 (CPU+RAM)</label>
+                <div class="hint">Проверка на ошибки вычислений и перегрев процессора.</div>
+            </div>
+        </div>
+
+        <div class="item">
+            <input type="checkbox" id="t3">
+            <div class="item-content">
+                <label for="t3">CrystalDiskInfo (SSD/HDD)</label>
+                <div class="hint">Смотри статус (Smart), количество переназначенных секторов.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📚 Полезные ресурсы</h2>
+        <div class="links-grid">
+            <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" class="link-card" target="_blank">GPU-Z (Данные видеокарты)</a>
+            <a href="https://www.hwinfo.com/download/" class="link-card" target="_blank">HWiNFO (Все датчики)</a>
+            <a href="https://geeks3d.com/furmark/" class="link-card" target="_blank">FurMark (Бублик)</a>
+            <a href="https://vk.com/maddy_murk" class="link-card" target="_blank">Группа Мурка (Советы Б/У)</a>
+        </div>
     </div>
 
     <script>
-        // Простая логика зачеркивания текста при клике
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
-                const label = e.target.nextElementSibling;
-                if (e.target.checked) {
-                    label.classList.add('checked-text');
-                } else {
-                    label.classList.remove('checked-text');
+                const parent = e.target.closest('.item-content');
+                if (parent) {
+                    if (e.target.checked) {
+                        parent.querySelector('label').classList.add('checked-text');
+                    } else {
+                        parent.querySelector('label').classList.remove('checked-text');
+                    }
                 }
             });
         });
