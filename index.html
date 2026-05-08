@@ -6,120 +6,42 @@
     <title>KCAS GIGAWATT ONLY</title>
     <style>
         body {
-            background-color: #000;
             margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
-            font-family: 'Courier New', monospace;
+            flex-direction: column;
         }
 
-        #kcas-box {
+        #container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             cursor: pointer;
         }
 
+        /* Основная картинка Ксаса из твоего репозитория */
         #kcas-img {
             width: 100%;
             height: 100%;
-            background: url('https://www.google.com/search?client=ms-android-transsion&hs=Mwqp&sca_esv=a869d935ffb722c4&sxsrf=ANbL-n4iTKa7gRbjvcskc9EDX5jhAlFeTg:1778259210047&udm=2&fbs=ADc_l-ZhZwqRfIRNTFz1njGTSUZtHqhe7TQLOF6JTVwO5eGqehtXOmhkDe_-0JeEkflHJ-WU8T_lbfeBbC27RjYDDHvfI2vom0Ne_2SNdsAiLBv5QNc_wR6q-2hbaV0w_n6PFUo4sjtoHOtalcyQ2Zk1Uc-8ZJffErZNFBmebi_yjB1ZBOYbZeiwc3wzb9zqG3_T19-0p0ostmvBCTpou5h1wigR8tD85t246dfLRDWPI_dxzylGyKU&q=%D0%BA%D1%81%D0%B0%D1%81+%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B0&sa=X&ved=2ahUKEwjx-KHkk6qUAxW6QfEDHYjUNeUQtKgLegQIDhAB&biw=392&bih=784&dpr=2.75#sv=CAMSVxoyKhBlLVdSMllHNmpRWXRJS0JNMg5XUjJZRzZqUVl0SUtCTToOeHJCVmxmNENZU0lOQk0gBCoXCgFzEhBlLVdSMllHNmpRWXRJS0JNGAEwAUoECAEQAhgHIOGT5ccBSggQAhgBIAIoAQ') no-repeat center/contain;
-            filter: drop-shadow(0 0 10px #fb0);
+            background: url('https://raw.githubusercontent.com/lekanovar/ksas-p.../main/13213047639112124541.jpeg') no-repeat center/contain;
+            transition: transform 0.1s;
         }
 
-        .shard {
-            position: absolute;
-            background: url('https://www.google.com/search?client=ms-android-transsion&hs=Mwqp&sca_esv=a869d935ffb722c4&sxsrf=ANbL-n4iTKa7gRbjvcskc9EDX5jhAlFeTg:1778259210047&udm=2&fbs=ADc_l-ZhZwqRfIRNTFz1njGTSUZtHqhe7TQLOF6JTVwO5eGqehtXOmhkDe_-0JeEkflHJ-WU8T_lbfeBbC27RjYDDHvfI2vom0Ne_2SNdsAiLBv5QNc_wR6q-2hbaV0w_n6PFUo4sjtoHOtalcyQ2Zk1Uc-8ZJffErZNFBmebi_yjB1ZBOYbZeiwc3wzb9zqG3_T19-0p0ostmvBCTpou5h1wigR8tD85t246dfLRDWPI_dxzylGyKU&q=%D0%BA%D1%81%D0%B0%D1%81+%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D0%B0&sa=X&ved=2ahUKEwjx-KHkk6qUAxW6QfEDHYjUNeUQtKgLegQIDhAB&biw=392&bih=784&dpr=2.75#sv=CAMSVxoyKhBlLVdSMllHNmpRWXRJS0JNMg5XUjJZRzZqUVl0SUtCTToOeHJCVmxmNENZU0lOQk0gBCoXCgFzEhBlLVdSMllHNmpRWXRJS0JNGAEwAUoECAEQAhgHIOGT5ccBSggQAhgBIAIoAQ') no-repeat;
-            background-size: 300px 300px;
-            border: 1px solid rgba(255, 0, 0, 0.5);
-            transition: all 0.7s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-            pointer-events: none;
+        /* Эффект тряски при наведении */
+        #container:hover #kcas-img {
+            animation: shake 0.2s infinite;
         }
 
-        #revive-btn {
-            display: none;
-            margin-top: 50px;
-            background: #f00;
-            color: #fff;
-            border: none;
-            padding: 20px 40px;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 30px #f00;
-            text-transform: uppercase;
-            animation: pulse 1s infinite;
-            z-index: 100;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="kcas-box" onclick="detonate()">
-        <div id="kcas-img"></div>
-    </div>
-
-    <button id="revive-btn" onclick="restore()">ВОСКРЕСИТЬ КСАС</button>
-
-    <script>
-        const kcasBox = document.getElementById('kcas-box');
-        const kcasImg = document.getElementById('kcas-img');
-        const reviveBtn = document.getElementById('revive-btn');
-
-        function detonate() {
-            if (kcasImg.style.display === 'none') return;
-            
-            kcasImg.style.display = 'none';
-            document.body.style.backgroundColor = "#200"; // Эффект тревоги
-
-            for (let i = 0; i < 30; i++) {
-                const shard = document.createElement('div');
-                shard.className = 'shard';
-                const w = Math.random() * 80 + 30;
-                const h = Math.random() * 80 + 30;
-                shard.style.width = w + 'px';
-                shard.style.height = h + 'px';
-                
-                // Раздаем каждому осколку свой кусок картинки
-                shard.style.backgroundPosition = `-${Math.random() * 220}px -${Math.random() * 220}px`;
-                
-                shard.style.left = '110px';
-                shard.style.top = '110px';
-                kcasBox.appendChild(shard);
-
-                const tx = (Math.random() - 0.5) * 1000;
-                const ty = (Math.random() - 0.5) * 1000;
-                const rot = Math.random() * 1080;
-
-                setTimeout(() => {
-                    shard.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
-                    shard.style.opacity = '0';
-                }, 20);
-            }
-
-            setTimeout(() => {
-                reviveBtn.style.display = 'block';
-            }, 700);
-        }
-
-        function restore() {
-            const shards = document.querySelectorAll('.shard');
-            shards.forEach(s => s.remove());
-            
-            kcasImg.style.display = 'block';
-            reviveBtn.style.display = 'none';
-            document.body.style.backgroundColor = "#000";
-        }
-    </script>
-</body>
-</html>
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            20% { transform: translate(-1px, -2px) rotate(-1deg); }
+            40% { transform: translate(-3px, 0px) rotate(1deg); }
+            6Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+        
