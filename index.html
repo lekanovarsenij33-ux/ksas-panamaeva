@@ -3,45 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KCAS GIGAWATT ONLY</title>
+    <title>Чек-лист: Сборка на Zeon</title>
     <style>
-        body {
+        /* Основные настройки фона и страницы */
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            /* Глубокий темный градиент */
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #16213e 100%);
+            background-attachment: fixed;
+            color: #e0e0e0; 
+            padding: 20px; 
             margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', Courier, monospace;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            min-height: 100vh;
         }
 
-        #container {
-            position: relative;
-            width: 350px;
-            height: 350px;
-            cursor: pointer;
+        h2 { 
+            color: #4CAF50; 
+            border-bottom: 2px solid #4CAF50; 
+            padding-bottom: 10px; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Основная картинка Ксаса из твоего репозитория */
-        #kcas-img {
-            width: 100%;
-            height: 100%;
-            background: url('https://raw.githubusercontent.com/lekanovar/ksas-p.../main/13213047639112124541.jpeg') no-repeat center/contain;
-            transition: transform 0.1s;
+        /* Карточки разделов */
+        .section { 
+            background: rgba(30, 30, 30, 0.8); /* Полупрозрачность для эффекта стекла */
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* Эффект тряски при наведении */
-        #container:hover #kcas-img {
-            animation: shake 0.2s infinite;
+        /* Настройка элементов списка */
+        .item { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            cursor: pointer; 
+            transition: transform 0.2s;
         }
 
-        @keyframes shake {
-            0% { transform: translate(1px, 1px) rotate(0deg); }
-            20% { transform: translate(-1px, -2px) rotate(-1deg); }
-            40% { transform: translate(-3px, 0px) rotate(1deg); }
-            6Normally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+        .item:active {
+            transform: scale(0.98);
+        }
+
+        input[type="checkbox"] { 
+            width: 24px; 
+            height: 24px; 
+            margin-right: 15px; 
+            cursor: pointer; 
+            accent-color: #4CAF50; /* Цвет галочки */
+        }
+
+        .checked-text { 
+            text-decoration: line-through; 
+            color: #757575; 
+        }
+
+        .hint { 
+            font-size: 0.85em; 
+            color: #888; 
+            margin-left: 39px; 
+            margin-top: -8px; 
+            margin-bottom: 15px; 
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🛠 Проверка комплектующих (Б/У)</h2>
+
+    <div class="section">
+        <div class="item">
+            <input type="checkbox" id="mobo">
+            <label for="mobo">Материнка (X79/X99)</label>
+        </div>
+        <div class="hint">Осмотри сокет на загнутые ножки. Проверь все слоты оперативки и вздутые конденсаторы.</div>
         
+        <div class="item">
+            <input type="checkbox" id="cpu">
+            <label for="cpu">Процессор (Zeon E5)</label>
+        </div>
+        <div class="hint">Проверь "брюшко" на наличие сбитых компонентов и царапин на текстолите.</div>
+
+        <div class="item">
+            <input type="checkbox" id="gpu">
+            <label for="gpu">Видеокарта (GTX 1060)</label>
+        </div>
+        <div class="hint">Смотри на пломбы. Текстолит должен быть светлым (не "жареным"). Проверь кулеры на люфт.</div>
+
+        <div class="item">
+            <input type="checkbox" id="psu">
+            <label for="psu">Блок питания</label>
+        </div>
+        <div class="hint">Проверь вольтаж мультиметром или в софте. Главное — отсутствие запаха гари.</div>
+    </div>
+
+    <div class="section">
+        <h2>📊 Тесты в софте</h2>
+        <div class="item"><input type="checkbox" id="fur"><span>FurMark (15 минут)</span></div>
+        <div class="item"><input type="checkbox" id="aida"><span>AIDA64 (Стресс-тест CPU)</span></div>
+        <div class="item"><input type="checkbox" id="mem"><span>TestMem5 (Проверка ОЗУ)</span></div>
+    </div>
+
+    <script>
+        // Простая логика зачеркивания текста при клике
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const label = e.target.nextElementSibling;
+                if (e.target.checked) {
+                    label.classList.add('checked-text');
+                } else {
+                    label.classList.remove('checked-text');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
