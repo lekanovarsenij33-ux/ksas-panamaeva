@@ -3,148 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master PC Check-List</title>
+    <title>ULTIMATE PC CHECKLIST</title>
     <style>
         :root {
             --bg: #0d1117;
-            --card-bg: #161b22;
+            --card: #161b22;
             --accent: #58a6ff;
             --success: #238636;
+            --warning: #d29922;
             --text: #c9d1d9;
-            --text-dim: #8b949e;
         }
-
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: linear-gradient(180deg, var(--bg) 0%, #010409 100%);
-            color: var(--text);
-            padding: 15px;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        h1 { color: var(--accent); font-size: 1.5rem; text-align: center; margin-bottom: 20px; }
-        h2 { color: var(--success); font-size: 1.1rem; border-bottom: 1px solid #30363d; padding-bottom: 8px; margin-top: 25px; }
-
-        .section { 
-            background: var(--card-bg); 
-            padding: 15px; 
-            border-radius: 10px; 
-            margin-bottom: 15px; 
-            border: 1px solid #30363d;
-        }
-
-        .item { display: flex; align-items: flex-start; margin-bottom: 15px; }
-        
-        input[type="checkbox"] { 
-            width: 22px; 
-            height: 22px; 
-            margin-right: 12px; 
-            flex-shrink: 0;
-            accent-color: var(--success);
-        }
-
+        body { font-family: sans-serif; background: var(--bg); color: var(--text); padding: 15px; margin: 0; }
+        h1 { color: var(--accent); text-align: center; font-size: 1.4rem; }
+        h2 { color: var(--success); font-size: 1.1rem; margin-top: 20px; border-left: 4px solid var(--success); padding-left: 10px; }
+        .section { background: var(--card); padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #30363d; }
+        .item { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        input[type="checkbox"] { width: 20px; height: 20px; margin-right: 12px; flex-shrink: 0; accent-color: var(--success); }
         .item-content label { font-weight: bold; display: block; cursor: pointer; }
-        .hint { font-size: 0.85rem; color: var(--text-dim); margin-top: 4px; }
+        .hint { font-size: 0.85rem; color: #8b949e; margin-top: 3px; }
+        .checked-text { text-decoration: line-through; opacity: 0.5; }
         
-        .checked-text { text-decoration: line-through; color: var(--text-dim); opacity: 0.6; }
-
-        /* Блок со ссылками */
-        .links-grid { display: grid; gap: 10px; margin-top: 10px; }
-        .link-card {
-            background: #21262d;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: var(--accent);
-            font-size: 0.9rem;
-            border: 1px solid #30363d;
-            text-align: center;
-        }
-        .link-card:active { background: #30363d; }
+        .prog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .prog-card { background: #21262d; padding: 8px; border-radius: 5px; text-decoration: none; color: var(--accent); font-size: 0.8rem; border: 1px solid #30363d; text-align: center; }
     </style>
 </head>
 <body>
 
-    <h1>🖥️ Ультимативный Чек-лист ПК</h1>
+    <h1>🚀 ULTIMATE PC MASTER CHECKLIST</h1>
 
     <div class="section">
-        <h2>🔍 Визуальный осмотр</h2>
-        
+        <h2>🛠️ Физический осмотр (Hard)</h2>
         <div class="item">
-            <input type="checkbox" id="c1">
-            <div class="item-content">
-                <label for="c1">Внешний вид (Корпус/БП)</label>
-                <div class="hint">Царапины, вмятины, запах гари, следы залития жидкостью.</div>
+            <input type="checkbox" id="h1"><div class="item-content">
+                <label for="h1">Материнская плата</label>
+                <div class="hint">Сокет (ножки!), вздутые кондеры, царапины у отверстий винтов, следы флюса (ремонт).</div>
             </div>
         </div>
-
         <div class="item">
-            <input type="checkbox" id="c2">
-            <div class="item-content">
-                <label for="c2">Материнская плата</label>
-                <div class="hint">Вздутые конденсаторы, царапины на дорожках, загнутые ножки сокета.</div>
+            <input type="checkbox" id="h2"><div class="item-content">
+                <label for="h2">Видеокарта</label>
+                <div class="hint">Цвет текстолита за чипом (не "жареный"?), наличие пломб, люфт вентиляторов, потеки прокладок.</div>
             </div>
         </div>
-
         <div class="item">
-            <input type="checkbox" id="c3">
-            <div class="item-content">
-                <label for="c3">Видеокарта</label>
-                <div class="hint">Пломбы, цвет текстолита (не должен быть тёмным), подтеки термопрокладок.</div>
+            <input type="checkbox" id="h3"><div class="item-content">
+                <label for="h3">Блок питания</label>
+                <div class="hint">Целостность проводов, запах гари, шум вентилятора (подшипник).</div>
+            </div>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="h4"><div class="item-content">
+                <label for="h4">ОЗУ и Диски</label>
+                <div class="hint">Чистота контактов плашек, отсутствие сколов на углах SSD.</div>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>⚙️ Тесты под нагрузкой</h2>
-        
+        <h2>💻 Программные тесты (Soft)</h2>
         <div class="item">
-            <input type="checkbox" id="t1">
-            <div class="item-content">
-                <label for="t1">FurMark (GPU)</label>
-                <div class="hint">Гони 10-15 мин. Следи за температурой и отсутствием артефактов.</div>
+            <input type="checkbox" id="s1"><div class="item-content">
+                <label for="s1">Видеокарта: FurMark + Superposition</label>
+                <div class="hint">Проверка на артефакты и стабильность питания под нагрузкой.</div>
             </div>
         </div>
-
         <div class="item">
-            <input type="checkbox" id="t2">
-            <div class="item-content">
-                <label for="t2">OCCT / AIDA64 (CPU+RAM)</label>
-                <div class="hint">Проверка на ошибки вычислений и перегрев процессора.</div>
+            <input type="checkbox" id="s2"><div class="item-content">
+                <label for="s2">Процессор: OCCT (Linpack)</label>
+                <div class="hint">Самый жесткий тест на ошибки ядер и перегрев.</div>
             </div>
         </div>
-
         <div class="item">
-            <input type="checkbox" id="t3">
-            <div class="item-content">
-                <label for="t3">CrystalDiskInfo (SSD/HDD)</label>
-                <div class="hint">Смотри статус (Smart), количество переназначенных секторов.</div>
+            <input type="checkbox" id="s3"><div class="item-content">
+                <label for="s3">Память: TestMem5 (Конфиг Extreme)</label>
+                <div class="hint">Если есть хоть 1 ошибка — память под замену.</div>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>📚 Полезные ресурсы</h2>
-        <div class="links-grid">
-            <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" class="link-card" target="_blank">GPU-Z (Данные видеокарты)</a>
-            <a href="https://www.hwinfo.com/download/" class="link-card" target="_blank">HWiNFO (Все датчики)</a>
-            <a href="https://geeks3d.com/furmark/" class="link-card" target="_blank">FurMark (Бублик)</a>
-            <a href="https://vk.com/maddy_murk" class="link-card" target="_blank">Группа Мурка (Советы Б/У)</a>
+        <h2>📦 Набор программ (Download)</h2>
+        <div class="prog-grid">
+            <a href="https://www.hwinfo.com/" class="prog-card">HWiNFO (Мониторинг)</a>
+            <a href="https://www.techpowerup.com/gpuz/" class="prog-card">GPU-Z (Инфо ГПУ)</a>
+            <a href="https://www.cpuid.com/softwares/cpu-z.html" class="prog-card">CPU-Z (Инфо ЦПУ)</a>
+            <a href="https://ocbase.com/" class="prog-card">OCCT (Стресс-тест)</a>
+            <a href="https://crystalmark.info/" class="prog-card">CrystalDisk (Диски)</a>
+            <a href="https://benchmark.unigine.com/superposition" class="prog-card">Superposition</a>
+            <a href="https://testmem.tz.ru/tm5.php" class="prog-card">TestMem5 (ОЗУ)</a>
+            <a href="https://www.resplendence.com/whocrashed" class="prog-card">WhoCrashed (Синие экраны)</a>
         </div>
     </div>
 
     <script>
         document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
             checkbox.addEventListener('change', (e) => {
-                const parent = e.target.closest('.item-content');
-                if (parent) {
-                    if (e.target.checked) {
-                        parent.querySelector('label').classList.add('checked-text');
-                    } else {
-                        parent.querySelector('label').classList.remove('checked-text');
-                    }
-                }
+                const label = e.target.nextElementSibling.querySelector('label');
+                label.classList.toggle('checked-text', e.target.checked);
             });
         });
     </script>
